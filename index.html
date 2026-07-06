@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ChatterBox — Messaging App</title>
+  <meta name="description"
+    content="Beautiful chat application with contacts, emoji support, dark mode, and message history." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/svg+xml" href="https://phyoheinkyaw.github.io/images/favicon.svg" />
+  <meta name="theme-color" content="#6C5CE7" />
+</head>
+
+<body>
+  <!-- ═══════════ SKIP LINK ═══════════ -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <span id="main-content" tabindex="-1" class="skip-target"></span>
+
+  <!-- ═══════════ APP LAYOUT ═══════════ -->
+  <div class="app-layout" id="appLayout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-top">
+          <div class="app-logo"><i class="fas fa-comments"></i> ChatterBox</div>
+          <div class="sidebar-actions">
+            <button class="icon-btn" id="themeToggle" aria-label="Toggle theme"><i class="fas fa-moon"></i></button>
+            <button class="icon-btn mobile-close" id="sidebarClose" aria-label="Close sidebar"><i
+                class="fas fa-times"></i></button>
+          </div>
+        </div>
+        <div class="search-box">
+          <i class="fas fa-search"></i>
+          <input type="text" id="contactSearch" placeholder="Search contacts..." />
+        </div>
+      </div>
+
+      <div class="contacts-list" id="contactsList"></div>
+
+      <div class="sidebar-footer">
+        <div class="user-status">
+          <span class="status-dot online"></span>
+          <span id="userName">You</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Mobile hamburger -->
+    <button class="icon-btn mobile-menu-btn" id="sidebarOpen" aria-label="Open sidebar" aria-expanded="false">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Main Chat Area -->
+    <main class="chat-area" id="chatArea">
+      <!-- Chat Header -->
+      <div class="chat-header" id="chatHeader">
+        <div class="chat-header-left">
+          <div class="chat-avatar" id="chatAvatar">👤</div>
+          <div class="chat-contact-info">
+            <div class="chat-contact-name" id="chatContactName">Select a contact</div>
+            <div class="chat-contact-status" id="chatContactStatus">Start chatting</div>
+          </div>
+        </div>
+        <div class="chat-header-actions">
+          <button class="icon-btn" id="searchMsgsBtn" aria-label="Search messages"><i
+              class="fas fa-search"></i></button>
+        </div>
+      </div>
+
+      <!-- Message search -->
+      <div class="msg-search-bar" id="msgSearchBar" style="display:none">
+        <i class="fas fa-search"></i>
+        <input type="text" id="msgSearchInput" placeholder="Search messages..." />
+        <button class="icon-btn" id="msgSearchClose"><i class="fas fa-times"></i></button>
+      </div>
+
+      <!-- Messages -->
+      <div class="messages-container" id="messagesContainer">
+        <div class="messages-empty" id="messagesEmpty">
+          <i class="fas fa-comment-dots"></i>
+          <h3>Select a contact</h3>
+          <p>Choose someone from the sidebar to start chatting.</p>
+        </div>
+      </div>
+
+      <!-- Typing indicator -->
+      <div class="typing-indicator" id="typingIndicator" style="display:none">
+        <span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span>
+        <span class="typing-text" id="typingText">Someone is typing...</span>
+      </div>
+
+      <!-- Message Input -->
+      <div class="message-input-area">
+        <button class="icon-btn" id="emojiBtn" aria-label="Emoji picker"><i class="fas fa-smile"></i></button>
+        <div class="input-wrapper">
+          <input type="text" id="messageInput" placeholder="Type a message..." />
+        </div>
+        <button class="send-btn" id="sendBtn" aria-label="Send message"><i class="fas fa-paper-plane"></i></button>
+      </div>
+
+      <!-- Emoji Picker -->
+      <div class="emoji-picker" id="emojiPicker">
+        <div class="emoji-picker-header">
+          <span>Emojis</span>
+          <button class="icon-btn" id="emojiClose"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="emoji-grid" id="emojiGrid"></div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Mobile contact info overlay -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- ═══════════ TOAST CONTAINER ═══════════ -->
+  <div class="toast-container" id="toastContainer" aria-live="polite" aria-atomic="true"></div>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
